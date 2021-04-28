@@ -2,7 +2,6 @@ package co.ao.mfdesenvolvimento.resources;
 
 
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,27 +9,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.ao.mfdesenvolvimento.domain.Categoria;
-import co.ao.mfdesenvolvimento.services.CategoriaService;
+import co.ao.mfdesenvolvimento.domain.Cliente;
+import co.ao.mfdesenvolvimento.services.ClienteService;
 
 @RestController	
-@RequestMapping(value = "/categorias")
-public class CategoriaResource {
+@RequestMapping(value = "/clientes")
+public class ClienteResource {
 	@Autowired
-	private CategoriaService service;
+	private ClienteService service;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {
-		Categoria obj = service.buscar(id);
+		Cliente obj = service.buscar(id);
 		return ResponseEntity.ok().body(obj);
 
 	}
 	
 	/*@RequestMapping(method = RequestMethod.GET)
-	public List<Categoria> listar(){
-		Categoria cat1 = new Categoria(1, "Informatica");
-		Categoria cat2 = new Categoria(2, "Escritorio");
-		List<Categoria> lst = new ArrayList<>();
+	public List<Cliente> listar(){
+		Cliente cat1 = new Cliente(1, "Informatica");
+		Cliente cat2 = new Cliente(2, "Escritorio");
+		List<Cliente> lst = new ArrayList<>();
 		lst.add(cat1);
 		lst.add(cat2);
 		return lst;
