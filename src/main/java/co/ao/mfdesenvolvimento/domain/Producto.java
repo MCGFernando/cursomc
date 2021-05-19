@@ -25,7 +25,7 @@ public class Producto implements Serializable{
 	private Integer id;
 	private String nome;
 	private Double preco;
-	@JsonBackReference
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(
 			name = "PRODUCTO_CATEGORIA", //Define o nome da tabela que vai ser criada na assiciacao manytomany
