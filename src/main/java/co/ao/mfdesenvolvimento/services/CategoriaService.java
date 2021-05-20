@@ -3,10 +3,12 @@ package co.ao.mfdesenvolvimento.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import co.ao.mfdesenvolvimento.domain.Categoria;
 import co.ao.mfdesenvolvimento.repositories.CategoriaRepository;
+import co.ao.mfdesenvolvimento.services.exceptions.DataIntegrityException;
 import co.ao.mfdesenvolvimento.services.exceptions.ObjectNotFoundException;
 
 @Service
@@ -31,5 +33,13 @@ public class CategoriaService {
 	public Categoria update(Categoria obj) {
 		find(obj.getId());
 		return repo.save(obj);
+	}
+	public void delete(Integer id) {
+		find(id);
+		try {
+			repo.deleteById(id);
+		}catch (DataIntegrityViolationException e) {
+			throw new DataIntegrityException("Nao é possivel exluir categoria com Productos cadastrados");
+		}
 	}
 }
