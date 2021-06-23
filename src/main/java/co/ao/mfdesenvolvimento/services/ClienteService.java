@@ -18,6 +18,7 @@ import co.ao.mfdesenvolvimento.domain.Endereco;
 import co.ao.mfdesenvolvimento.domain.enums.TipoCliente;
 import co.ao.mfdesenvolvimento.dto.ClienteDTO;
 import co.ao.mfdesenvolvimento.dto.ClienteNewDTO;
+import co.ao.mfdesenvolvimento.repositories.CidadeRepository;
 import co.ao.mfdesenvolvimento.repositories.ClienteRepository;
 import co.ao.mfdesenvolvimento.repositories.EnderecoRepository;
 import co.ao.mfdesenvolvimento.services.exceptions.DataIntegrityException;
@@ -31,6 +32,9 @@ public class ClienteService {
 	
 	@Autowired
 	private EnderecoRepository endRepo;
+	
+	@Autowired
+	private CidadeRepository cidRepo;
 	
 	public Cliente find(Integer id) {
 		Optional<Cliente> obj = repo.findById(id);
